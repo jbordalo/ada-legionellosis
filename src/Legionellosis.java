@@ -81,6 +81,10 @@ public class Legionellosis {
             }
         }
 
+        if (sol.size() == 0) {
+            sol.add(0);
+        }
+
         return sol;
     }
 }

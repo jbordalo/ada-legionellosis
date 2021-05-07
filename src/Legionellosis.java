@@ -25,31 +25,34 @@ public class Legionellosis {
     public void bfsExplore(int root, int maxDepth ) {
         Queue<Integer> waiting = new LinkedList<>();
         boolean[] found = new boolean[this.numNodes];
+
         int depth = 0;
+        int currentLevelNodes = 1;
+        int nextLevelNodes = 0;
+
         waiting.add(root);
-        waiting.add(-1);
         found[root] = true;
         this.perilousLocations[root]++;
+
         do {
             int node = waiting.remove();
-
-            if (node == -1) {
-                depth++;
-                waiting.add(-1);
-                if (waiting.peek() == -1) {
-                    break;
-                } else {
-                    continue;
-                }
-            }
+            currentLevelNodes--;
 
             for (Integer integer : this.nodeAdjacencies[node]) {
                 if (!found[integer]) {
                     this.perilousLocations[integer]++;
+                    nextLevelNodes++;
                     waiting.add(integer);
                     found[integer] = true;
                 }
             }
+
+            if (currentLevelNodes == 0) {
+                depth += 1;
+                currentLevelNodes = nextLevelNodes;
+                nextLevelNodes = 0;
+            }
+
         }
         while ( !waiting.isEmpty() && depth < maxDepth);
     }

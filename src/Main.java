@@ -22,6 +22,7 @@ public class Main {
         }
 
         int sickPeople = Integer.parseInt(input.readLine());
+        legionellosis.setSickPeople(sickPeople);
 
         for (int i = 0; i < sickPeople; i++) {
             tokens = input.readLine().split(" ");
@@ -32,6 +33,6 @@ public class Main {
 
         input.close();
 
-        System.out.println(Arrays.toString(legionellosis.solution()));
+        System.out.println(legionellosis.solution().toString().replaceAll("[\\[|\\],]", ""));
     }
 }

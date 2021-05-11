@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main {
 
@@ -33,6 +32,6 @@ public class Main {
 
         input.close();
 
-        System.out.println(legionellosis.solution().toString().replaceAll("[\\[|\\],]", ""));
+        System.out.println(legionellosis.solution());
     }
 }
